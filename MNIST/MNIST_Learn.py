@@ -19,7 +19,7 @@ y_train, y_test = to_categorical(y_train, 10), to_categorical(y_test, 10)
 # print(y_train[0], y_test[0])
 
 # If your data doesn't have testing then lets make it!
-# now we shoudl build the training and testing sets
+# now we should build the training and testing sets
 # we will take 80% of data for training and 20% of data to test
 # from sklearn.model_selection import train_test_split
 
@@ -82,7 +82,7 @@ model.add(layers.Flatten())
 # transformation of its input data
 # This layer is basically a information processing layer
 model.add(layers.Dense(
-    # lets define how many neruons this layer has
+    # lets define how many neurons this layer has
     units=128,
     activation='relu'
 ))
@@ -91,6 +91,10 @@ model.add(layers.Dense(
 model.add(layers.Dense(
     # there are 10 classes of output zero->nine
     units=10,
+    # softmax is a generalization of the logistic function that
+    # "squashes" a K-dimensional vector z of arbitrary real values
+    # to a K-dimensional vector sigma(z) of real values in the range [0, 1]
+    # that add up to 1
     activation='softmax'
 ))
 
@@ -114,7 +118,7 @@ model.compile(
 
 # Now we have to reshape the data to fit that extra dimension from earlier
 
-# Remeber we added the 1 to tell we are using greyscale 0->255 not color images
+# Remember we added the 1 to tell we are using greyscale 0->255 not color images
 # print(x_train.shape)
 x_train = x_train.reshape(x_train.shape + (1,))
 # print(x_train.shape)
@@ -133,7 +137,7 @@ model.fit(
     # Model is not trained on this
     # Serves as a way to evaluate the model
     # on unseen data it helps YOU understand
-    # how well the model is generalizaing
+    # how well the model is generalizing
     validation_data=(x_test, y_test)
 )
 
